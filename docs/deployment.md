@@ -1,61 +1,42 @@
-# CySIEM Architecture
+# Deployment Guide
 
-## Overview
+This document will contain deployment instructions for the CySIEM platform.
 
-CySIEM is an AI-powered Security Information and Event Management (SIEM) platform designed to collect, process, analyze, correlate, and visualize security events.
+## Current Plan
 
-The platform follows a modular architecture where each team is responsible for a specific layer of the workflow.
-
-## Architecture
-
-```
-Security Data Sources
-        │
-        ▼
-Layer 1 - Data Collection
-        │
-        ▼
-Layer 2 - Data Processing
-        │
-        ▼
-Layer 3 - Asset Intelligence
-        │
-        ▼
-Layer 4 - AI Detection
-        │
-        ▼
-Layer 5 - Correlation
-        │
-        ▼
-Layer 6 - Investigation
-        │
-        ▼
-Layer 7 - Knowledge Fabric (RAG)
-        │
-        ▼
-Layer 8 - AI Security Copilot
-        │
-        ▼
-Layer 9 - Dashboard
-        │
-        ▼
-Layer 10 - Response & Learning
-```
-
-## Technologies
-
-- Python
+Backend
 - FastAPI
-- Ollama
-- Hugging Face Models
-- ChromaDB / FAISS
+
+Frontend
 - React
+
+AI Models
+- Ollama
+
+Vector Database
+- ChromaDB / FAISS
+
+Containerization
 - Docker
 
-## Design Principles
+Version Control
+- GitHub
 
-- Modular
-- Scalable
-- AI-first
-- Easy integration
-- Reusable APIs
+## Deployment Steps
+
+1. Clone the repository.
+2. Install project dependencies.
+3. Configure environment variables.
+4. Start backend services.
+5. Start frontend.
+6. Start Ollama.
+7. Verify API connectivity.
+8. Test complete workflow.
+
+## Future Improvements
+
+- Docker Compose
+- Kubernetes
+- Cloud deployment
+- CI/CD pipeline
+- Monitoring and logging
