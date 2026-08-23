@@ -1,0 +1,11 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+pydantic==2.9.2
+requests==2.32.3
+ollama==0.3.3
+pytest==8.3.3
+httpx==0.27.2
+
+# Only required when DETECTION_BACKEND=transformers (sathishphdai/cybersecurity-slm-5m):
+# torch==2.4.1
+# transformers==4.44.2

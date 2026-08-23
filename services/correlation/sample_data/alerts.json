@@ -1,0 +1,5 @@
+[
+  {"id": "a1", "source": "windows", "target": "server-01", "timestamp": "2026-08-01T10:00:00Z", "title": "Failed login", "severity": "high"},
+  {"id": "a2", "source": "windows", "target": "server-01", "timestamp": "2026-08-01T10:03:00Z", "title": "Failed login", "severity": "medium"},
+  {"id": "a3", "source": "linux", "target": "server-02", "timestamp": "2026-08-01T10:10:00Z", "title": "Suspicious process", "severity": "low"}
+]

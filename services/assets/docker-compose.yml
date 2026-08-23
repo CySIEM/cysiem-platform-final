@@ -1,0 +1,42 @@
+services:
+  layer3-api:
+    build: .
+    container_name: cysiem-layer3-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://cysiem:cysiem@postgres:5432/cysiem_layer3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - cysiem-net
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: cysiem-layer3-postgres
+    environment:
+      POSTGRES_USER: cysiem
+      POSTGRES_PASSWORD: cysiem
+      POSTGRES_DB: cysiem_layer3
+    ports:
+      - "5432:5432"
+    volumes:
+      - layer3_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cysiem -d cysiem_layer3"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - cysiem-net
+
+volumes:
+  layer3_pgdata:
+
+networks:
+  cysiem-net:
+    driver: bridge

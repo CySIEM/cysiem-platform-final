@@ -1,0 +1,140 @@
+{
+  "alert_count": 2,
+  "incident_count": 1,
+  "incidents": [
+    {
+      "incident_id": "INC-001",
+      "target": "server-01",
+      "summary": "Potential incident on server-01",
+      "status": "open",
+      "alert_count": 2,
+      "severity_score": 90,
+      "confidence_score": 85,
+      "confidence_details": {
+        "score": 85,
+        "reasons": [
+          "Multiple alerts support the same incident",
+          "Source or destination IP addresses were present",
+          "User context was present",
+          "Process activity was present",
+          "Vulnerability context was present"
+        ]
+      },
+      "correlation_reasons": [
+        "Multiple related alerts were observed",
+        "Shared source or destination IP was present",
+        "A common user context was present",
+        "Process activity was observed"
+      ],
+      "facts": {
+        "ips": ["10.0.0.15", "10.0.0.20"],
+        "hosts": ["server-01"],
+        "users": ["alice"],
+        "processes": ["powershell.exe", "cmd.exe"],
+        "techniques": ["T1110", "T1059"],
+        "severity_counts": {
+          "high": 1,
+          "medium": 1
+        }
+      },
+      "mitre": [
+        {
+          "technique": "T1110",
+          "name": "Brute Force"
+        },
+        {
+          "technique": "T1059",
+          "name": "Command and Scripting Interpreter"
+        }
+      ],
+      "root_cause": {
+        "root_cause": "Observed evidence suggests: Failed login activity and PowerShell execution",
+        "attack_chain": [
+          "Failed login activity",
+          "PowerShell execution"
+        ],
+        "recommendations": [
+          "Review authentication logs and reset impacted credentials",
+          "Inspect the host for suspicious script activity"
+        ]
+      },
+      "evidence": {
+        "evidence_items": [
+          {
+            "id": "alert-101",
+            "title": "Failed login from PowerShell",
+            "source": "windows",
+            "target": "server-01",
+            "source_ip": "10.0.0.15",
+            "destination_ip": "10.0.0.20",
+            "username": "alice",
+            "processes": ["powershell.exe"]
+          }
+        ],
+        "summary": {
+          "source_ips": ["10.0.0.15"],
+          "hostnames": [],
+          "iocs": []
+        }
+      },
+      "timeline": [
+        {
+          "id": "alert-101",
+          "timestamp": "2026-08-10T10:00:00Z",
+          "title": "Failed login from PowerShell"
+        }
+      ],
+      "attack_graph": {
+        "nodes": ["server-01", "10.0.0.15", "alice", "powershell.exe", "Initial Access"],
+        "edges": [
+          ["10.0.0.15", "server-01"],
+          ["alice", "server-01"],
+          ["server-01", "powershell.exe"]
+        ],
+        "summary": "Attack path reconstructed from observed entities and relationships"
+      },
+      "alerts": [
+        {
+          "id": "alert-101",
+          "title": "Failed login from PowerShell"
+        },
+        {
+          "id": "alert-102",
+          "title": "Suspicious process execution"
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "id": "alert-101",
+      "timestamp": "2026-08-10T10:00:00Z",
+      "title": "Failed login from PowerShell"
+    }
+  ],
+  "attack_graph": {
+    "nodes": ["server-01", "10.0.0.15", "alice", "powershell.exe", "Initial Access"],
+    "edges": [
+      ["10.0.0.15", "server-01"],
+      ["alice", "server-01"],
+      ["server-01", "powershell.exe"]
+    ],
+    "summary": "Attack path reconstructed from observed entities and relationships"
+  },
+  "evidence": {
+    "summary": {
+      "ips": ["10.0.0.15", "10.0.0.20"],
+      "hosts": ["server-01"],
+      "users": ["alice"]
+    }
+  },
+  "report": {
+    "summary": "Evidence-based incident analysis completed",
+    "recommendations": [
+      [
+        "Review authentication logs and reset impacted credentials",
+        "Inspect the host for suspicious script activity"
+      ]
+    ]
+  }
+}

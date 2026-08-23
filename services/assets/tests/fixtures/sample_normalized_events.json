@@ -1,0 +1,3660 @@
+[
+  {
+    "event_id": "005479d3-50fc-42b8-83ec-9bd6b4bfb711",
+    "ingested_at": "2026-08-08T08:15:28.507397Z",
+    "event_time": "2026-08-08T08:15:28.505764Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/usr/lib/systemd/systemd-executor",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786176923.487:1841): argc=7 a0=\"/usr/lib/systemd/systemd-executor\" a1=\"--deserialize\" a2=\"154\" a3=\"--log-level\" a4=\"info\" a5=\"--log-target\" a6=\"journal-or-kmsg\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.505764+00:00",
+        "ingested_at": "2026-08-08T08:15:28.507320+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "998b2317-c9f0-4cb2-a9a7-8775b4b3532a",
+    "ingested_at": "2026-08-08T08:15:28.592062Z",
+    "event_time": "2026-08-08T08:15:28.590362Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786176923.487:1841): cwd=\"/\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786176923.487:1841): cwd=\"/\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.590362+00:00",
+        "ingested_at": "2026-08-08T08:15:28.591987+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "18d9faf4-3c64-44a0-a287-3df89438f1d3",
+    "ingested_at": "2026-08-08T08:15:28.646876Z",
+    "event_time": "2026-08-08T08:15:28.645564Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.487:1841): item=0 name=\"/proc/self/fd/16\" inode=1051171 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.487:1841): item=0 name=\"/proc/self/fd/16\" inode=1051171 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.645564+00:00",
+        "ingested_at": "2026-08-08T08:15:28.646794+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "5bf73291-ae34-4366-a990-4896791f2b7e",
+    "ingested_at": "2026-08-08T08:15:28.696716Z",
+    "event_time": "2026-08-08T08:15:28.695056Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.487:1841): item=1 name=\"/proc/self/fd/16\" inode=29569 dev=00:17 mode=0120000 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.487:1841): item=1 name=\"/proc/self/fd/16\" inode=29569 dev=00:17 mode=0120000 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.695056+00:00",
+        "ingested_at": "2026-08-08T08:15:28.696517+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "00110570-ed80-468d-9473-0835e512ee38",
+    "ingested_at": "2026-08-08T08:15:28.732943Z",
+    "event_time": "2026-08-08T08:15:28.731909Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.487:1841): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.487:1841): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.731909+00:00",
+        "ingested_at": "2026-08-08T08:15:28.732879+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "b241961f-6261-431a-944e-357c172ecce3",
+    "ingested_at": "2026-08-08T08:15:28.771194Z",
+    "event_time": "2026-08-08T08:15:28.769967Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786176923.487:1841): proctitle=2F7573722F6C69622F73797374656D642F73797374656D642D6578656375746F72002D2D646573657269616C697A6500313534002D2D6C6F672D6C6576656C00696E666F002D2D6C6F672D746172676574006A6F75726E616C2D6F722D6B6D7367",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.769967+00:00",
+        "ingested_at": "2026-08-08T08:15:28.771129+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "65000222-b126-49b7-8783-3c688845d779",
+    "ingested_at": "2026-08-08T08:15:28.846044Z",
+    "event_time": "2026-08-08T08:15:28.844886Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/usr/bin/python3",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /usr/bin/python3 /opt/kksiem/collector_heartbeat.py --host debian13-srv01 --collector fluent-bit --watch-file /var/log/audit/audit.log --kafka-brokers 192.168.50.30:9092"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786176923.551:1842): argc=10 a0=\"/usr/bin/python3\" a1=\"/opt/kksiem/collector_heartbeat.py\" a2=\"--host\" a3=\"debian13-srv01\" a4=\"--collector\" a5=\"fluent-bit\" a6=\"--watch-file\" a7=\"/var/log/audit/audit.log\" a8=\"--kafka-brokers\" a9=\"192.168.50.30:9092\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.844886+00:00",
+        "ingested_at": "2026-08-08T08:15:28.845981+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "d351e85e-fb84-41d1-9088-2cc3e3ee10fe",
+    "ingested_at": "2026-08-08T08:15:28.885029Z",
+    "event_time": "2026-08-08T08:15:28.883769Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786176923.551:1842): cwd=\"/\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786176923.551:1842): cwd=\"/\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.883769+00:00",
+        "ingested_at": "2026-08-08T08:15:28.884959+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "667c575d-2fb9-4e60-aef2-d0e9d1620105",
+    "ingested_at": "2026-08-08T08:15:28.921880Z",
+    "event_time": "2026-08-08T08:15:28.920733Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.551:1842): item=0 name=\"/usr/bin/python3\" inode=1082212 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.551:1842): item=0 name=\"/usr/bin/python3\" inode=1082212 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.920733+00:00",
+        "ingested_at": "2026-08-08T08:15:28.921806+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "f776a3b8-7f40-4bf6-bcb0-b402427846d3",
+    "ingested_at": "2026-08-08T08:15:28.955386Z",
+    "event_time": "2026-08-08T08:15:28.954166Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.551:1842): item=1 name=\"/usr/bin/python3\" inode=1082547 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.551:1842): item=1 name=\"/usr/bin/python3\" inode=1082547 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.954166+00:00",
+        "ingested_at": "2026-08-08T08:15:28.955316+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "9f0141fe-710c-4f73-be02-92b1bbb26424",
+    "ingested_at": "2026-08-08T08:15:28.999828Z",
+    "event_time": "2026-08-08T08:15:28.997750Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176923.551:1842): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176923.551:1842): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:28.997750+00:00",
+        "ingested_at": "2026-08-08T08:15:28.999714+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "ccba9081-2aed-4628-8497-465c194c52fa",
+    "ingested_at": "2026-08-08T08:15:29.033319Z",
+    "event_time": "2026-08-08T08:15:29.032292Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786176923.551:1842): proctitle=2F7573722F6C69622F73797374656D642F73797374656D642D6578656375746F72002D2D646573657269616C697A6500313534002D2D6C6F672D6C6576656C00696E666F002D2D6C6F672D746172676574006A6F75726E616C2D6F722D6B6D7367",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:29.032292+00:00",
+        "ingested_at": "2026-08-08T08:15:29.033256+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "0e1760ff-62c4-45c6-86d7-f8c78bc9314d",
+    "ingested_at": "2026-08-08T08:15:29.064557Z",
+    "event_time": "2026-08-08T08:15:29.063371Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "service_start",
+      "user": "0",
+      "process_name": "/usr/lib/systemd/systemd",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=SERVICE_START msg=audit(1786176923.671:1843): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=SERVICE_START msg=audit(1786176923.671:1843): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:29.063371+00:00",
+        "ingested_at": "2026-08-08T08:15:29.064491+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "e24d248f-260a-4e55-bcb0-76afc78aee2c",
+    "ingested_at": "2026-08-08T08:15:29.098581Z",
+    "event_time": "2026-08-08T08:15:29.097117Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "service_stop",
+      "user": "0",
+      "process_name": "/usr/lib/systemd/systemd",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=SERVICE_STOP msg=audit(1786176923.671:1844): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=SERVICE_STOP msg=audit(1786176923.671:1844): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:15:29.097117+00:00",
+        "ingested_at": "2026-08-08T08:15:29.098505+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "58933973-3657-4217-94b5-8a3488851569",
+    "ingested_at": "2026-08-08T08:16:38.477291Z",
+    "event_time": "2026-08-08T08:16:38.472405Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/usr/lib/systemd/systemd-executor",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786176993.492:1845): argc=7 a0=\"/usr/lib/systemd/systemd-executor\" a1=\"--deserialize\" a2=\"154\" a3=\"--log-level\" a4=\"info\" a5=\"--log-target\" a6=\"journal-or-kmsg\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.472405+00:00",
+        "ingested_at": "2026-08-08T08:16:38.477182+00:00",
+        "skew_seconds": 0.005,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "ecb5c564-ddd2-4e26-92f5-28e72c2920bf",
+    "ingested_at": "2026-08-08T08:16:38.668348Z",
+    "event_time": "2026-08-08T08:16:38.664844Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786176993.492:1845): cwd=\"/\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786176993.492:1845): cwd=\"/\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.664844+00:00",
+        "ingested_at": "2026-08-08T08:16:38.668229+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "32736b8a-90d7-44aa-b7ff-e2685a9d5ba4",
+    "ingested_at": "2026-08-08T08:16:38.756040Z",
+    "event_time": "2026-08-08T08:16:38.753541Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.492:1845): item=0 name=\"/proc/self/fd/16\" inode=1051171 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.492:1845): item=0 name=\"/proc/self/fd/16\" inode=1051171 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.753541+00:00",
+        "ingested_at": "2026-08-08T08:16:38.755918+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "12ead63a-e52d-4383-9655-97f6b5e3aa67",
+    "ingested_at": "2026-08-08T08:16:38.836226Z",
+    "event_time": "2026-08-08T08:16:38.834221Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.492:1845): item=1 name=\"/proc/self/fd/16\" inode=27452 dev=00:17 mode=0120000 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.492:1845): item=1 name=\"/proc/self/fd/16\" inode=27452 dev=00:17 mode=0120000 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.834221+00:00",
+        "ingested_at": "2026-08-08T08:16:38.836064+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "0232ba99-94e9-4f88-a9d6-a45932b9e452",
+    "ingested_at": "2026-08-08T08:16:38.893561Z",
+    "event_time": "2026-08-08T08:16:38.891951Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.492:1845): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.492:1845): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.891951+00:00",
+        "ingested_at": "2026-08-08T08:16:38.893437+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "c6c13ff8-322a-4da6-bd70-167f9d07b971",
+    "ingested_at": "2026-08-08T08:16:38.977175Z",
+    "event_time": "2026-08-08T08:16:38.969222Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786176993.492:1845): proctitle=2F7573722F6C69622F73797374656D642F73797374656D642D6578656375746F72002D2D646573657269616C697A6500313534002D2D6C6F672D6C6576656C00696E666F002D2D6C6F672D746172676574006A6F75726E616C2D6F722D6B6D7367",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:38.969222+00:00",
+        "ingested_at": "2026-08-08T08:16:38.973013+00:00",
+        "skew_seconds": 0.004,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "ddc10c07-0238-4d04-8fb6-123c81759f2f",
+    "ingested_at": "2026-08-08T08:16:39.142587Z",
+    "event_time": "2026-08-08T08:16:39.140096Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/usr/bin/python3",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /usr/bin/python3 /opt/kksiem/collector_heartbeat.py --host debian13-srv01 --collector fluent-bit --watch-file /var/log/audit/audit.log --kafka-brokers 192.168.50.30:9092"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786176993.532:1846): argc=10 a0=\"/usr/bin/python3\" a1=\"/opt/kksiem/collector_heartbeat.py\" a2=\"--host\" a3=\"debian13-srv01\" a4=\"--collector\" a5=\"fluent-bit\" a6=\"--watch-file\" a7=\"/var/log/audit/audit.log\" a8=\"--kafka-brokers\" a9=\"192.168.50.30:9092\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.140096+00:00",
+        "ingested_at": "2026-08-08T08:16:39.142483+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "b4b6cb9b-0d41-49d9-a0eb-6cdab4beab86",
+    "ingested_at": "2026-08-08T08:16:39.307937Z",
+    "event_time": "2026-08-08T08:16:39.306252Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786176993.532:1846): cwd=\"/\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786176993.532:1846): cwd=\"/\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.306252+00:00",
+        "ingested_at": "2026-08-08T08:16:39.307855+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "68866626-9ae7-441f-a7bd-98636119b345",
+    "ingested_at": "2026-08-08T08:16:39.380840Z",
+    "event_time": "2026-08-08T08:16:39.378428Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.532:1846): item=0 name=\"/usr/bin/python3\" inode=1082212 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.532:1846): item=0 name=\"/usr/bin/python3\" inode=1082212 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.378428+00:00",
+        "ingested_at": "2026-08-08T08:16:39.380566+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "d95c3ce8-fc40-491f-9430-86fb81ade96f",
+    "ingested_at": "2026-08-08T08:16:39.452136Z",
+    "event_time": "2026-08-08T08:16:39.450371Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.532:1846): item=1 name=\"/usr/bin/python3\" inode=1082547 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.532:1846): item=1 name=\"/usr/bin/python3\" inode=1082547 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.450371+00:00",
+        "ingested_at": "2026-08-08T08:16:39.452054+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "54e901b6-aec4-447d-8931-0354b149637f",
+    "ingested_at": "2026-08-08T08:16:39.593228Z",
+    "event_time": "2026-08-08T08:16:39.591007Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786176993.532:1846): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786176993.532:1846): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.591007+00:00",
+        "ingested_at": "2026-08-08T08:16:39.593121+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "8c596ab6-63ee-4372-a413-4794cfdcca6e",
+    "ingested_at": "2026-08-08T08:16:39.686178Z",
+    "event_time": "2026-08-08T08:16:39.683061Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/lib/systemd/systemd-executor --deserialize 154 --log-level info --log-target journal-or-kmsg"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786176993.532:1846): proctitle=2F7573722F6C69622F73797374656D642F73797374656D642D6578656375746F72002D2D646573657269616C697A6500313534002D2D6C6F672D6C6576656C00696E666F002D2D6C6F672D746172676574006A6F75726E616C2D6F722D6B6D7367",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.683061+00:00",
+        "ingested_at": "2026-08-08T08:16:39.686005+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "ad761d9d-b49e-4f54-867d-9770eceb22a3",
+    "ingested_at": "2026-08-08T08:16:39.757397Z",
+    "event_time": "2026-08-08T08:16:39.754746Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "service_start",
+      "user": "0",
+      "process_name": "/usr/lib/systemd/systemd",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=SERVICE_START msg=audit(1786176993.820:1847): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=SERVICE_START msg=audit(1786176993.820:1847): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.754746+00:00",
+        "ingested_at": "2026-08-08T08:16:39.757316+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "c97cd004-5c95-4954-95d3-9f0ee15a44e9",
+    "ingested_at": "2026-08-08T08:16:39.834154Z",
+    "event_time": "2026-08-08T08:16:39.830898Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "service_stop",
+      "user": "0",
+      "process_name": "/usr/lib/systemd/systemd",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=SERVICE_STOP msg=audit(1786176993.820:1848): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=SERVICE_STOP msg=audit(1786176993.820:1848): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kksiem-heartbeat comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:16:39.830898+00:00",
+        "ingested_at": "2026-08-08T08:16:39.834047+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "15c145a6-553e-44e2-a913-5e0357901f9a",
+    "ingested_at": "2026-08-08T08:17:03.397772Z",
+    "event_time": "2026-08-08T08:17:03.395552Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/usr/sbin/unix_chkpwd",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /usr/sbin/unix_chkpwd root chkexpiry"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786177021.460:1849): argc=3 a0=\"/usr/sbin/unix_chkpwd\" a1=\"root\" a2=\"chkexpiry\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.395552+00:00",
+        "ingested_at": "2026-08-08T08:17:03.397516+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "21ed2390-c9b5-4075-93a1-6c7a5de32bbf",
+    "ingested_at": "2026-08-08T08:17:03.494169Z",
+    "event_time": "2026-08-08T08:17:03.492926Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786177021.460:1849): cwd=\"/var/spool/cron\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786177021.460:1849): cwd=\"/var/spool/cron\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.492926+00:00",
+        "ingested_at": "2026-08-08T08:17:03.494093+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "73a16651-e8e1-4e52-94a1-ce2cea294a97",
+    "ingested_at": "2026-08-08T08:17:03.545772Z",
+    "event_time": "2026-08-08T08:17:03.544340Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.460:1849): item=0 name=\"/usr/sbin/unix_chkpwd\" inode=1048499 dev=08:01 mode=0102755 ouid=0 ogid=42 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"shadow\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.460:1849): item=0 name=\"/usr/sbin/unix_chkpwd\" inode=1048499 dev=08:01 mode=0102755 ouid=0 ogid=42 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"shadow\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.544340+00:00",
+        "ingested_at": "2026-08-08T08:17:03.545697+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "bc737b9c-c756-4bec-9aa5-ce8ac41a965c",
+    "ingested_at": "2026-08-08T08:17:03.611953Z",
+    "event_time": "2026-08-08T08:17:03.608873Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.460:1849): item=1 name=\"/usr/sbin/unix_chkpwd\" inode=1048499 dev=08:01 mode=0102755 ouid=0 ogid=42 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"shadow\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.460:1849): item=1 name=\"/usr/sbin/unix_chkpwd\" inode=1048499 dev=08:01 mode=0102755 ouid=0 ogid=42 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"shadow\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.608873+00:00",
+        "ingested_at": "2026-08-08T08:17:03.611873+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "6748ebfd-fcc1-4768-bd7f-d043aaa63038",
+    "ingested_at": "2026-08-08T08:17:03.660801Z",
+    "event_time": "2026-08-08T08:17:03.658549Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.460:1849): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.460:1849): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.658549+00:00",
+        "ingested_at": "2026-08-08T08:17:03.660544+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "9ff7a9aa-d6a7-4d50-be58-2bfe237ae97d",
+    "ingested_at": "2026-08-08T08:17:03.713356Z",
+    "event_time": "2026-08-08T08:17:03.712051Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/sbin/unix_chkpwd root chkexpiry"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786177021.460:1849): proctitle=2F7573722F7362696E2F756E69785F63686B70776400726F6F740063686B657870697279",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.712051+00:00",
+        "ingested_at": "2026-08-08T08:17:03.713276+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "4b6ae2fb-b600-4e6c-9668-7c40c9afbe4c",
+    "ingested_at": "2026-08-08T08:17:03.760577Z",
+    "event_time": "2026-08-08T08:17:03.757960Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "system",
+      "action": "account_activity",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=USER_ACCT msg=audit(1786177021.484:1850): pid=4051 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:accounting grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=USER_ACCT msg=audit(1786177021.484:1850): pid=4051 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:accounting grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.757960+00:00",
+        "ingested_at": "2026-08-08T08:17:03.760482+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "49a41af8-2f63-4a6f-b18f-04b142ddcb95",
+    "ingested_at": "2026-08-08T08:17:03.805144Z",
+    "event_time": "2026-08-08T08:17:03.803205Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "authentication",
+      "action": "credential_acquired",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=CRED_ACQ msg=audit(1786177021.484:1851): pid=4051 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"unset\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CRED_ACQ msg=audit(1786177021.484:1851): pid=4051 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"unset\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.803205+00:00",
+        "ingested_at": "2026-08-08T08:17:03.805061+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "992d8761-c6ce-478f-b170-c85a878d086e",
+    "ingested_at": "2026-08-08T08:17:03.856097Z",
+    "event_time": "2026-08-08T08:17:03.854448Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "login",
+      "user": "0",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=LOGIN msg=audit(1786177021.484:1852): pid=4051 uid=0 subj=unconfined old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=7 res=1\u001dUID=\"root\" OLD-AUID=\"unset\" AUID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=LOGIN msg=audit(1786177021.484:1852): pid=4051 uid=0 subj=unconfined old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=7 res=1\u001dUID=\"root\" OLD-AUID=\"unset\" AUID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.854448+00:00",
+        "ingested_at": "2026-08-08T08:17:03.856006+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "f3c61c2f-a964-496b-a59d-a820a0c0b63c",
+    "ingested_at": "2026-08-08T08:17:03.932914Z",
+    "event_time": "2026-08-08T08:17:03.931687Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /usr/sbin/CRON -f"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786177021.484:1852): proctitle=2F7573722F7362696E2F43524F4E002D66",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.931687+00:00",
+        "ingested_at": "2026-08-08T08:17:03.932845+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "0ddeb9fb-f87d-445c-8281-a7cc260d877d",
+    "ingested_at": "2026-08-08T08:17:03.965581Z",
+    "event_time": "2026-08-08T08:17:03.964265Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "authentication",
+      "action": "session_start",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=USER_START msg=audit(1786177021.492:1853): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:session_open grantors=pam_loginuid,pam_env,pam_env,pam_permit,pam_umask,pam_unix,pam_limits acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=USER_START msg=audit(1786177021.492:1853): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:session_open grantors=pam_loginuid,pam_env,pam_env,pam_permit,pam_umask,pam_unix,pam_limits acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:03.964265+00:00",
+        "ingested_at": "2026-08-08T08:17:03.965510+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "8cf00e20-fa78-407f-be95-58da47918835",
+    "ingested_at": "2026-08-08T08:17:04.002343Z",
+    "event_time": "2026-08-08T08:17:04.000882Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "authentication",
+      "action": "credential_refresh",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=CRED_REFR msg=audit(1786177021.512:1854): pid=4053 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CRED_REFR msg=audit(1786177021.512:1854): pid=4053 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.000882+00:00",
+        "ingested_at": "2026-08-08T08:17:04.002241+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "dc92c3f4-b9ec-4dfb-a4c2-b9bae818628d",
+    "ingested_at": "2026-08-08T08:17:04.092093Z",
+    "event_time": "2026-08-08T08:17:04.090099Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "/bin/sh",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: /bin/sh -c 6364202F2026262072756E2D7061727473202D2D7265706F7274202F6574632F63726F6E2E686F75726C79"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786177021.512:1855): argc=3 a0=\"/bin/sh\" a1=\"-c\" a2=6364202F2026262072756E2D7061727473202D2D7265706F7274202F6574632F63726F6E2E686F75726C79",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.090099+00:00",
+        "ingested_at": "2026-08-08T08:17:04.092013+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "a0a4301a-e6b3-486c-b5c9-dd46885bd18a",
+    "ingested_at": "2026-08-08T08:17:04.130370Z",
+    "event_time": "2026-08-08T08:17:04.126402Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786177021.512:1855): cwd=\"/root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786177021.512:1855): cwd=\"/root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.126402+00:00",
+        "ingested_at": "2026-08-08T08:17:04.130274+00:00",
+        "skew_seconds": 0.004,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "225144bc-1745-45da-9d38-a253c26cda13",
+    "ingested_at": "2026-08-08T08:17:04.176077Z",
+    "event_time": "2026-08-08T08:17:04.173599Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.512:1855): item=0 name=\"/bin/sh\" inode=1047784 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.512:1855): item=0 name=\"/bin/sh\" inode=1047784 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.173599+00:00",
+        "ingested_at": "2026-08-08T08:17:04.175987+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "a8abadff-d53f-44ca-9779-5fbf1e1a046a",
+    "ingested_at": "2026-08-08T08:17:04.216119Z",
+    "event_time": "2026-08-08T08:17:04.213434Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.512:1855): item=1 name=\"/bin/sh\" inode=1047794 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.512:1855): item=1 name=\"/bin/sh\" inode=1047794 dev=08:01 mode=0120777 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.213434+00:00",
+        "ingested_at": "2026-08-08T08:17:04.216028+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "408b5da7-221c-49fa-a21f-ddc7fccbce50",
+    "ingested_at": "2026-08-08T08:17:04.277872Z",
+    "event_time": "2026-08-08T08:17:04.273538Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.512:1855): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.512:1855): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.273538+00:00",
+        "ingested_at": "2026-08-08T08:17:04.277683+00:00",
+        "skew_seconds": 0.004,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "b62f56ab-d59a-4d94-b04f-e7c41623877f",
+    "ingested_at": "2026-08-08T08:17:04.342136Z",
+    "event_time": "2026-08-08T08:17:04.340595Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: /bin/sh -c cd / && run-parts --report /etc/cron.hourly"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786177021.512:1855): proctitle=2F62696E2F7368002D63006364202F2026262072756E2D7061727473202D2D7265706F7274202F6574632F63726F6E2E686F75726C79",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.340595+00:00",
+        "ingested_at": "2026-08-08T08:17:04.342061+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "799715d0-eaf6-4132-9ca5-3d58f36bcd87",
+    "ingested_at": "2026-08-08T08:17:04.454196Z",
+    "event_time": "2026-08-08T08:17:04.452271Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "process_execution",
+      "user": null,
+      "process_name": "run-parts",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "EXECVE argv: run-parts --report /etc/cron.hourly"
+    },
+    "ocsf_class": null,
+    "raw": "type=EXECVE msg=audit(1786177021.528:1856): argc=3 a0=\"run-parts\" a1=\"--report\" a2=\"/etc/cron.hourly\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.452271+00:00",
+        "ingested_at": "2026-08-08T08:17:04.454093+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "f4e718ce-0fd5-4644-ba3f-8ef7ab29bb07",
+    "ingested_at": "2026-08-08T08:17:04.492547Z",
+    "event_time": "2026-08-08T08:17:04.491171Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cwd",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=CWD msg=audit(1786177021.528:1856): cwd=\"/\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CWD msg=audit(1786177021.528:1856): cwd=\"/\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.491171+00:00",
+        "ingested_at": "2026-08-08T08:17:04.492473+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "bf6ef3c9-ab3f-4dac-bad5-c3cfe0017033",
+    "ingested_at": "2026-08-08T08:17:04.530785Z",
+    "event_time": "2026-08-08T08:17:04.528711Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.528:1856): item=0 name=\"/usr/bin/run-parts\" inode=1047270 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.528:1856): item=0 name=\"/usr/bin/run-parts\" inode=1047270 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.528711+00:00",
+        "ingested_at": "2026-08-08T08:17:04.530689+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "e3cc31e1-19fa-4ee5-86cd-9f0b3f153e96",
+    "ingested_at": "2026-08-08T08:17:04.575415Z",
+    "event_time": "2026-08-08T08:17:04.571892Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.528:1856): item=1 name=\"/usr/bin/run-parts\" inode=1047270 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.528:1856): item=1 name=\"/usr/bin/run-parts\" inode=1047270 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.571892+00:00",
+        "ingested_at": "2026-08-08T08:17:04.574762+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "df4f3743-eaed-4806-83eb-3a0655d30e40",
+    "ingested_at": "2026-08-08T08:17:04.616282Z",
+    "event_time": "2026-08-08T08:17:04.614474Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "path",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "type=PATH msg=audit(1786177021.528:1856): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=PATH msg=audit(1786177021.528:1856): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=1049402 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.614474+00:00",
+        "ingested_at": "2026-08-08T08:17:04.616202+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "d0cbb39d-0bf3-43cc-a40d-af6bc513b198",
+    "ingested_at": "2026-08-08T08:17:04.653457Z",
+    "event_time": "2026-08-08T08:17:04.652113Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "process",
+      "action": "proctitle",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "PROCTITLE: run-parts --report /etc/cron.hourly"
+    },
+    "ocsf_class": null,
+    "raw": "type=PROCTITLE msg=audit(1786177021.528:1856): proctitle=72756E2D7061727473002D2D7265706F7274002F6574632F63726F6E2E686F75726C79",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.652113+00:00",
+        "ingested_at": "2026-08-08T08:17:04.653357+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "42376a7e-d6f1-49d1-b9a0-621e6c161d8c",
+    "ingested_at": "2026-08-08T08:17:04.696442Z",
+    "event_time": "2026-08-08T08:17:04.694890Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "cred_disp",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=CRED_DISP msg=audit(1786177021.540:1857): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=CRED_DISP msg=audit(1786177021.540:1857): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.694890+00:00",
+        "ingested_at": "2026-08-08T08:17:04.696371+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "38100104-6c3e-436f-8fc7-e3054d330c24",
+    "ingested_at": "2026-08-08T08:17:04.733357Z",
+    "event_time": "2026-08-08T08:17:04.732018Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "debian13-srv01",
+      "ip": "192.168.30.30",
+      "segment": "OPT2",
+      "source_type": "linux_server",
+      "log_type": "auditd",
+      "collector": "fluent-bit"
+    },
+    "normalized": {
+      "event_category": "authentication",
+      "action": "session_end",
+      "user": "root",
+      "process_name": "/usr/sbin/cron",
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": "success",
+      "message": "type=USER_END msg=audit(1786177021.544:1858): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:session_close grantors=pam_loginuid,pam_env,pam_env,pam_permit,pam_umask,pam_unix,pam_limits acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\""
+    },
+    "ocsf_class": null,
+    "raw": "type=USER_END msg=audit(1786177021.544:1858): pid=4051 uid=0 auid=0 ses=7 subj=unconfined msg='op=PAM:session_close grantors=pam_loginuid,pam_env,pam_env,pam_permit,pam_umask,pam_unix,pam_limits acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'\u001dUID=\"root\" AUID=\"root\"",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "debian13-srv01",
+        "criticality": "high",
+        "owner": "you",
+        "asset_type": "linux_server",
+        "segment": "OPT2",
+        "tags": [],
+        "notes": "MAC 00:0c:29:c1:57:a5, IP 192.168.30.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:04.732018+00:00",
+        "ingested_at": "2026-08-08T08:17:04.733276+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "85df976d-93d9-4a3e-a03a-72e1beeca737",
+    "ingested_at": "2026-08-08T08:17:21.869683Z",
+    "event_time": "2026-08-08T08:17:21.866401Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_5379",
+      "user": "123mi",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Credential Manager credentials were read.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-1681708721-700246781-3486218167-1001\n\tAccount Name:\t\t123mi\n\tAccount Domain:\t\tWIN11-01\n\tLogon ID:\t\t0x882ca\n\tRead Operation:\t\tEnumerate Credentials\n\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Credential Manager credentials were read.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-21-1681708721-700246781-3486218167-1001\\n\\tAccount Name:\\t\\t123mi\\n\\tAccount Domain:\\t\\tWIN11-01\\n\\tLogon ID:\\t\\t0x882ca\\n\\tRead Operation:\\t\\tEnumerate Credentials\\n\\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager.\",\"event\":{\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\",\"action\":\"User Account Management\",\"created\":\"2026-08-08T08:17:11.687Z\",\"code\":\"5379\",\"kind\":\"event\"},\"winlog\":{\"keywords\":[\"Audit Success\"],\"task\":\"User Account Management\",\"event_id\":\"5379\",\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"record_id\":162446,\"event_data\":{\"TargetName\":\"WindowsLive:(cert):name=02hqvqihvisfukpq;serviceuri=*\",\"CountOfCredentialsReturned\":\"0\",\"ClientProcessId\":\"1268\",\"SubjectUserSid\":\"S-1-5-21-1681708721-700246781-3486218167-1001\",\"SubjectDomainName\":\"WIN11-01\",\"Type\":\"0\",\"ReturnCode\":\"3221226021\",\"ProcessCreationTime\":\"2026-08-06 10:59:36.5263194 +0000 UTC\",\"SubjectLogonId\":\"0x882ca\",\"ReadOperation\":\"Enumerate Credentials\",\"SubjectUserName\":\"123mi\"},\"channel\":\"Security\",\"computer_name\":\"WIN11-01\",\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\",\"opcode\":\"Info\",\"process\":{\"thread\":{\"id\":888},\"pid\":832}},\"@timestamp\":\"2026-08-08T08:17:10.1303055Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:21.866401+00:00",
+        "ingested_at": "2026-08-08T08:17:21.869519+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "0b674116-57f5-48bf-bb86-4ad26e91b1ac",
+    "ingested_at": "2026-08-08T08:17:21.932830Z",
+    "event_time": "2026-08-08T08:17:21.930330Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_5379",
+      "user": "123mi",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Credential Manager credentials were read.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-1681708721-700246781-3486218167-1001\n\tAccount Name:\t\t123mi\n\tAccount Domain:\t\tWIN11-01\n\tLogon ID:\t\t0x882ca\n\tRead Operation:\t\tEnumerate Credentials\n\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Credential Manager credentials were read.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-21-1681708721-700246781-3486218167-1001\\n\\tAccount Name:\\t\\t123mi\\n\\tAccount Domain:\\t\\tWIN11-01\\n\\tLogon ID:\\t\\t0x882ca\\n\\tRead Operation:\\t\\tEnumerate Credentials\\n\\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager.\",\"event\":{\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\",\"action\":\"User Account Management\",\"created\":\"2026-08-08T08:17:11.689Z\",\"code\":\"5379\"},\"winlog\":{\"process\":{\"thread\":{\"id\":888},\"pid\":832},\"opcode\":\"Info\",\"event_data\":{\"CountOfCredentialsReturned\":\"1\",\"ProcessCreationTime\":\"2026-08-06 10:59:36.5263194 +0000 UTC\",\"SubjectUserName\":\"123mi\",\"SubjectDomainName\":\"WIN11-01\",\"ReadOperation\":\"Enumerate Credentials\",\"ReturnCode\":\"0\",\"SubjectLogonId\":\"0x882ca\",\"Type\":\"0\",\"SubjectUserSid\":\"S-1-5-21-1681708721-700246781-3486218167-1001\",\"TargetName\":\"MicrosoftAccount:user=123misterlight@gmail.com\",\"ClientProcessId\":\"1268\"},\"event_id\":\"5379\",\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\",\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"keywords\":[\"Audit Success\"],\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"task\":\"User Account Management\",\"computer_name\":\"WIN11-01\",\"channel\":\"Security\",\"record_id\":162448},\"@timestamp\":\"2026-08-08T08:17:10.1414339Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:21.930330+00:00",
+        "ingested_at": "2026-08-08T08:17:21.932738+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "b92830f4-cedd-4220-bbc4-3848c533e64a",
+    "ingested_at": "2026-08-08T08:17:21.977262Z",
+    "event_time": "2026-08-08T08:17:21.976076Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_5379",
+      "user": "WIN11-01$",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Credential Manager credentials were read.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tWIN11-01$\n\tAccount Domain:\t\tWORKGROUP\n\tLogon ID:\t\t0x3e7\n\tRead Operation:\t\tEnumerate Credentials\n\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Credential Manager credentials were read.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-18\\n\\tAccount Name:\\t\\tWIN11-01$\\n\\tAccount Domain:\\t\\tWORKGROUP\\n\\tLogon ID:\\t\\t0x3e7\\n\\tRead Operation:\\t\\tEnumerate Credentials\\n\\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager.\",\"event\":{\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\",\"action\":\"User Account Management\",\"created\":\"2026-08-08T08:17:11.684Z\",\"code\":\"5379\"},\"winlog\":{\"task\":\"User Account Management\",\"computer_name\":\"WIN11-01\",\"opcode\":\"Info\",\"event_data\":{\"ReadOperation\":\"Enumerate Credentials\",\"SubjectDomainName\":\"WORKGROUP\",\"SubjectLogonId\":\"0x3e7\",\"TargetName\":\"WindowsLive:(token):name=02ryhdkappcziyqm;serviceuri=*\",\"CountOfCredentialsReturned\":\"0\",\"SubjectUserSid\":\"S-1-5-18\",\"SubjectUserName\":\"WIN11-01$\",\"Type\":\"0\",\"ReturnCode\":\"3221226021\",\"ProcessCreationTime\":\"2026-08-06 10:59:36.5263194 +0000 UTC\",\"ClientProcessId\":\"1268\"},\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\",\"record_id\":162441,\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"event_id\":\"5379\",\"keywords\":[\"Audit Success\"],\"channel\":\"Security\",\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"process\":{\"pid\":832,\"thread\":{\"id\":9104}}},\"@timestamp\":\"2026-08-08T08:17:09.9820963Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:21.976076+00:00",
+        "ingested_at": "2026-08-08T08:17:21.977199+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "5640633a-253e-41f0-9fa1-854347fecd0d",
+    "ingested_at": "2026-08-08T08:17:22.013037Z",
+    "event_time": "2026-08-08T08:17:22.011820Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_4798",
+      "user": "WIN11-01$",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "A user's local group membership was enumerated.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-18\n\tAccount Name:\t\tWIN11-01$\n\tAccount Domain:\t\tWORKGROUP\n\tLogon ID:\t\t0x3e7\n\nUser:\n\tSecurity ID:\t\tS-1-5-21-1681708721-700246781-3486218167-1001\n\tAccount Name:\t\t123mi\n\tAccount Domain:\t\tWIN11-01\n\nProcess Information:\n\tProcess ID:\t\t0x694\n\tProcess Name:\t\tC:\\Windows\\System32\\svchost.exe"
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"A user's local group membership was enumerated.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-18\\n\\tAccount Name:\\t\\tWIN11-01$\\n\\tAccount Domain:\\t\\tWORKGROUP\\n\\tLogon ID:\\t\\t0x3e7\\n\\nUser:\\n\\tSecurity ID:\\t\\tS-1-5-21-1681708721-700246781-3486218167-1001\\n\\tAccount Name:\\t\\t123mi\\n\\tAccount Domain:\\t\\tWIN11-01\\n\\nProcess Information:\\n\\tProcess ID:\\t\\t0x694\\n\\tProcess Name:\\t\\tC:\\\\Windows\\\\System32\\\\svchost.exe\",\"event\":{\"code\":\"4798\",\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\",\"action\":\"User Account Management\",\"created\":\"2026-08-08T08:17:11.684Z\"},\"winlog\":{\"event_data\":{\"CallerProcessName\":\"C:\\\\Windows\\\\System32\\\\svchost.exe\",\"SubjectUserSid\":\"S-1-5-18\",\"CallerProcessId\":\"0x694\",\"TargetDomainName\":\"WIN11-01\",\"SubjectDomainName\":\"WORKGROUP\",\"TargetUserName\":\"123mi\",\"TargetSid\":\"S-1-5-21-1681708721-700246781-3486218167-1001\",\"SubjectUserName\":\"WIN11-01$\",\"SubjectLogonId\":\"0x3e7\"},\"channel\":\"Security\",\"event_id\":\"4798\",\"computer_name\":\"WIN11-01\",\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"keywords\":[\"Audit Success\"],\"opcode\":\"Info\",\"record_id\":162444,\"process\":{\"pid\":832,\"thread\":{\"id\":9104}},\"task\":\"User Account Management\",\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\"},\"@timestamp\":\"2026-08-08T08:17:09.9977228Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:22.011820+00:00",
+        "ingested_at": "2026-08-08T08:17:22.012972+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "a3a39554-ba82-4fe8-95d7-2081f1ec2733",
+    "ingested_at": "2026-08-08T08:17:22.053275Z",
+    "event_time": "2026-08-08T08:17:22.051502Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_5379",
+      "user": "123mi",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Credential Manager credentials were read.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-1681708721-700246781-3486218167-1001\n\tAccount Name:\t\t123mi\n\tAccount Domain:\t\tWIN11-01\n\tLogon ID:\t\t0x882ca\n\tRead Operation:\t\tEnumerate Credentials\n\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Credential Manager credentials were read.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-21-1681708721-700246781-3486218167-1001\\n\\tAccount Name:\\t\\t123mi\\n\\tAccount Domain:\\t\\tWIN11-01\\n\\tLogon ID:\\t\\t0x882ca\\n\\tRead Operation:\\t\\tEnumerate Credentials\\n\\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager.\",\"event\":{\"action\":\"User Account Management\",\"created\":\"2026-08-08T08:17:11.689Z\",\"code\":\"5379\",\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\"},\"winlog\":{\"keywords\":[\"Audit Success\"],\"computer_name\":\"WIN11-01\",\"record_id\":162449,\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"opcode\":\"Info\",\"event_id\":\"5379\",\"task\":\"User Account Management\",\"event_data\":{\"SubjectUserSid\":\"S-1-5-21-1681708721-700246781-3486218167-1001\",\"SubjectDomainName\":\"WIN11-01\",\"Type\":\"0\",\"SubjectUserName\":\"123mi\",\"ReturnCode\":\"3221226021\",\"TargetName\":\"WindowsLive:(token):name=123misterlight@gmail.com;serviceuri=*\",\"SubjectLogonId\":\"0x882ca\",\"CountOfCredentialsReturned\":\"0\",\"ReadOperation\":\"Enumerate Credentials\",\"ProcessCreationTime\":\"2026-08-06 10:59:36.5263194 +0000 UTC\",\"ClientProcessId\":\"1268\"},\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\",\"process\":{\"pid\":832,\"thread\":{\"id\":888}},\"channel\":\"Security\"},\"@timestamp\":\"2026-08-08T08:17:10.1444279Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:22.051502+00:00",
+        "ingested_at": "2026-08-08T08:17:22.053171+00:00",
+        "skew_seconds": 0.002,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "eb0a5096-b849-42f4-80cd-01c2d26ee5ba",
+    "ingested_at": "2026-08-08T08:17:22.090059Z",
+    "event_time": "2026-08-08T08:17:22.088928Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "security_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_5379",
+      "user": "123mi",
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Credential Manager credentials were read.\n\nSubject:\n\tSecurity ID:\t\tS-1-5-21-1681708721-700246781-3486218167-1001\n\tAccount Name:\t\t123mi\n\tAccount Domain:\t\tWIN11-01\n\tLogon ID:\t\t0x882ca\n\tRead Operation:\t\tEnumerate Credentials\n\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Credential Manager credentials were read.\\n\\nSubject:\\n\\tSecurity ID:\\t\\tS-1-5-21-1681708721-700246781-3486218167-1001\\n\\tAccount Name:\\t\\t123mi\\n\\tAccount Domain:\\t\\tWIN11-01\\n\\tLogon ID:\\t\\t0x882ca\\n\\tRead Operation:\\t\\tEnumerate Credentials\\n\\nThis event occurs when a user performs a read operation on stored credentials in Credential Manager.\",\"event\":{\"created\":\"2026-08-08T08:17:11.689Z\",\"code\":\"5379\",\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-Auditing\",\"outcome\":\"success\",\"action\":\"User Account Management\"},\"winlog\":{\"process\":{\"pid\":832,\"thread\":{\"id\":9104}},\"provider_guid\":\"{54849625-5478-4994-A5BA-3E3B0328C30D}\",\"activity_id\":\"{A503BAB4-2592-0001-71C0-03A59225DD01}\",\"record_id\":162450,\"task\":\"User Account Management\",\"channel\":\"Security\",\"event_id\":\"5379\",\"keywords\":[\"Audit Success\"],\"provider_name\":\"Microsoft-Windows-Security-Auditing\",\"event_data\":{\"CountOfCredentialsReturned\":\"0\",\"ReturnCode\":\"3221226021\",\"SubjectDomainName\":\"WIN11-01\",\"TargetName\":\"WindowsLive:(cert):name=123misterlight@gmail.com;serviceuri=*\",\"ClientProcessId\":\"1268\",\"Type\":\"0\",\"ReadOperation\":\"Enumerate Credentials\",\"SubjectUserName\":\"123mi\",\"SubjectLogonId\":\"0x882ca\",\"ProcessCreationTime\":\"2026-08-06 10:59:36.5263194 +0000 UTC\",\"SubjectUserSid\":\"S-1-5-21-1681708721-700246781-3486218167-1001\"},\"computer_name\":\"WIN11-01\",\"opcode\":\"Info\"},\"@timestamp\":\"2026-08-08T08:17:10.1447394Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:17:22.088928+00:00",
+        "ingested_at": "2026-08-08T08:17:22.089999+00:00",
+        "skew_seconds": 0.001,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "fe921054-9dcd-4ff8-932a-ce36b6162688",
+    "ingested_at": "2026-08-08T08:22:47.609228Z",
+    "event_time": "2026-08-08T08:22:47.603417Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "application_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_16394",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Offline downlevel migration succeeded."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Offline downlevel migration succeeded.\",\"event\":{\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-SPP\",\"action\":\"None\",\"created\":\"2026-08-08T08:22:37.391Z\",\"code\":\"16394\"},\"winlog\":{\"task\":\"None\",\"process\":{\"pid\":5276},\"channel\":\"Application\",\"record_id\":2894,\"opcode\":\"Info\",\"computer_name\":\"WIN11-01\",\"event_id\":\"16394\",\"keywords\":[\"Classic\"],\"provider_guid\":\"{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156}\",\"provider_name\":\"Microsoft-Windows-Security-SPP\"},\"@timestamp\":\"2026-08-08T08:22:36.4415843Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:22:47.603417+00:00",
+        "ingested_at": "2026-08-08T08:22:47.609050+00:00",
+        "skew_seconds": 0.006,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  },
+  {
+    "event_id": "f6195262-201a-424d-90cf-3b5a020b9879",
+    "ingested_at": "2026-08-08T08:23:17.850372Z",
+    "event_time": "2026-08-08T08:23:17.847257Z",
+    "source": {
+      "tenant_id": "default",
+      "host": "WIN11-01",
+      "ip": "192.168.20.30",
+      "segment": "OPT1",
+      "source_type": "windows_client",
+      "log_type": "application_eventlog",
+      "collector": "winlogbeat"
+    },
+    "normalized": {
+      "event_category": "other",
+      "action": "windows_event_16384",
+      "user": null,
+      "process_name": null,
+      "parent_process": null,
+      "src_ip": null,
+      "src_port": null,
+      "dest_ip": null,
+      "dest_port": null,
+      "protocol": null,
+      "outcome": null,
+      "message": "Successfully scheduled Software Protection service for re-start at 2026-08-08T11:48:06Z. Reason: RulesEngine."
+    },
+    "ocsf_class": null,
+    "raw": "{\"message\":\"Successfully scheduled Software Protection service for re-start at 2026-08-08T11:48:06Z. Reason: RulesEngine.\",\"event\":{\"created\":\"2026-08-08T08:23:07.663Z\",\"code\":\"16384\",\"kind\":\"event\",\"provider\":\"Microsoft-Windows-Security-SPP\",\"action\":\"None\"},\"winlog\":{\"task\":\"None\",\"opcode\":\"Info\",\"provider_guid\":\"{E23B33B0-C8C9-472C-A5F9-F2BDFEA0F156}\",\"channel\":\"Application\",\"event_id\":\"16384\",\"provider_name\":\"Microsoft-Windows-Security-SPP\",\"record_id\":2895,\"process\":{\"pid\":5276},\"computer_name\":\"WIN11-01\",\"keywords\":[\"Classic\"],\"event_data\":{\"param1\":\"2026-08-08T11:48:06Z\",\"param2\":\"RulesEngine\"}},\"@timestamp\":\"2026-08-08T08:23:07.0496105Z\"}",
+    "raw_format": "syslog",
+    "schema_version": "1.1",
+    "extensions": {
+      "asset": {
+        "host": "WIN11-01",
+        "criticality": "low",
+        "owner": "you",
+        "asset_type": "windows_client",
+        "segment": "OPT1",
+        "tags": [],
+        "notes": "Win11, MAC 00-0C-29-83-62-83, IP 192.168.20.30"
+      },
+      "timestamp_quality": {
+        "source_reported_time": "2026-08-08T08:23:17.847257+00:00",
+        "ingested_at": "2026-08-08T08:23:17.850220+00:00",
+        "skew_seconds": 0.003,
+        "verdict": "ok",
+        "host_rolling_skew_seconds": null,
+        "used_fallback_timestamp": true
+      },
+      "data_quality": {
+        "is_clean": true,
+        "issues": []
+      },
+      "routing": {
+        "decision": "clean",
+        "reasons": []
+      }
+    }
+  }
+]

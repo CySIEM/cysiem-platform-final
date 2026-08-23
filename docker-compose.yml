@@ -1,0 +1,114 @@
+version: "3.9"
+
+# Each service keeps its own native internal port (8000, or 11434 for
+# Ollama) - only host-side ports are remapped here to avoid collisions, so
+# no per-service code needed editing just to coexist. Inter-service calls
+# use the compose network's DNS names + each service's internal port
+# (see each service's .env.example for the equivalent local-dev values).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cysiem
+      POSTGRES_PASSWORD: cysiem
+      POSTGRES_DB: cysiem_layer3
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cysiem"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # One-time setup after `docker compose up -d ollama`:
+    #   docker exec -it cysiem-ollama-1 ollama pull hf.co/entrick/Security-SLM-Gemma-4-E2B-it-GGUF:Q4_K_M
+    #   docker exec -it cysiem-ollama-1 ollama pull llama3.2
+    # See services/detection/README.md for why this can't be baked into the image.
+
+  collection:
+    build: ./services/collection
+    ports:
+      - "8010:8000"
+    environment:
+      ASSETS_URL: http://assets:8000
+      ASSETS_API_KEY: ${ASSETS_API_KEY:-change-me-dev-key}
+    depends_on:
+      - assets
+
+  assets:
+    build: ./services/assets
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://cysiem:cysiem@postgres:5432/cysiem_layer3
+      API_KEY: ${ASSETS_API_KEY:-change-me-dev-key}
+      SECRET_KEY: ${ASSETS_SECRET_KEY:-change-me-dev-secret}
+      APP_ENV: development
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  detection:
+    build: ./services/detection
+    ports:
+      - "8012:8000"
+    environment:
+      CORRELATION_URL: http://correlation:8000
+      OLLAMA_HOST: http://ollama:11434
+      DETECTION_BACKEND: ${DETECTION_BACKEND:-ollama}
+      DETECTION_MODEL: ${DETECTION_MODEL:-hf.co/entrick/Security-SLM-Gemma-4-E2B-it-GGUF:Q4_K_M}
+      AUTO_FORWARD: "true"
+    depends_on:
+      - ollama
+      - correlation
+
+  correlation:
+    build: ./services/correlation
+    ports:
+      - "8013:8000"
+
+  rag-copilot:
+    build: ./services/rag-copilot
+    ports:
+      - "8014:8000"
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      COPILOT_MODEL: ${COPILOT_MODEL:-llama3.2}
+    depends_on:
+      - ollama
+
+  dashboard-backend:
+    build: ./dashboard/backend
+    ports:
+      - "8000:8000"
+    environment:
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-replace-with-your-own-secret}
+      SERVER_URL: http://localhost:8000
+      ALLOWED_ORIGINS: http://localhost:5173
+      CORRELATION_URL: http://correlation:8000
+      RAG_URL: http://rag-copilot:8000
+    depends_on:
+      - correlation
+      - rag-copilot
+
+  dashboard-frontend:
+    build: ./dashboard/frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api
+    depends_on:
+      - dashboard-backend
+
+volumes:
+  postgres_data:
+  ollama_data:

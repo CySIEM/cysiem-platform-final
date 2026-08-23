@@ -1,4 +1,10 @@
-# API Contracts
+# API Contracts (original planning doc)
+
+> **This document is the pre-implementation plan, written before any team
+> had built anything.** It does not match what was actually implemented.
+> See [../docs/integration-report.md](integration-report.md) for the real,
+> as-built contracts between every service, and why they differ from what's
+> below. Kept here for historical reference only.
 
 This document defines how different teams communicate with each other.
 

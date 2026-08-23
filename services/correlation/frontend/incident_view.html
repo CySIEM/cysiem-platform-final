@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team 4 Incidents</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .card { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+    button { padding: 0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Team 4 Incident View</h1>
+  <button onclick="loadIncidents()">Refresh</button>
+  <div id="output"></div>
+
+  <script>
+    async function loadIncidents() {
+      const response = await fetch('http://127.0.0.1:8000/incidents');
+      const data = await response.json();
+      const output = document.getElementById('output');
+      if (!data.length) {
+        output.innerHTML = '<p>No incidents found.</p>';
+        return;
+      }
+      output.innerHTML = data.map(item => `
+        <div class="card">
+          <h3>${item.incident_id} - ${item.target}</h3>
+          <p><strong>Status:</strong> ${item.status}</p>
+          <p><strong>Severity:</strong> ${item.severity_score}</p>
+          <p><strong>Confidence:</strong> ${item.confidence_score}</p>
+          <p>${item.summary}</p>
+        </div>
+      `).join('');
+    }
+    loadIncidents();
+  </script>
+</body>
+</html>

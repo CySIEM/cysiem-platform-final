@@ -1,0 +1,33 @@
+{
+  "alerts": [
+    {
+      "id": "alert-101",
+      "source": "windows",
+      "target": "server-01",
+      "host": "server-01",
+      "username": "alice",
+      "source_ip": "10.0.0.15",
+      "destination_ip": "10.0.0.20",
+      "process_name": "powershell.exe",
+      "timestamp": "2026-08-10T10:00:00Z",
+      "title": "Failed login from PowerShell",
+      "severity": "high",
+      "asset_criticality": "high",
+      "cves": ["CVE-2024-0001"]
+    },
+    {
+      "id": "alert-102",
+      "source": "windows",
+      "target": "server-01",
+      "host": "server-01",
+      "username": "alice",
+      "source_ip": "10.0.0.15",
+      "destination_ip": "10.0.0.20",
+      "process_name": "cmd.exe",
+      "timestamp": "2026-08-10T10:05:00Z",
+      "title": "Suspicious process execution",
+      "severity": "medium",
+      "asset_criticality": "high"
+    }
+  ]
+}
