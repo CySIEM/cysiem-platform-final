@@ -6,6 +6,12 @@ ollama==0.3.3
 pytest==8.3.3
 httpx==0.27.2
 
-# Only required when DETECTION_BACKEND=transformers (sathishphdai/cybersecurity-slm-5m):
+# Only required when DETECTION_BACKEND=transformers (sathishphdai/cybersecurity-slm-5m).
+# Note this model needs torch + huggingface_hub + safetensors + tokenizers
+# directly (see backends/transformers_backend.py) - NOT the `transformers`
+# library's AutoModelForCausalLM, which doesn't recognize this model's
+# custom architecture.
 # torch==2.4.1
-# transformers==4.44.2
+# huggingface_hub>=0.24
+# safetensors>=0.4
+# tokenizers>=0.19

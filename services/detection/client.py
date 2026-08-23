@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 import requests
 
-CORRELATION_URL = os.getenv("CORRELATION_URL", "http://localhost:8003")
+CORRELATION_URL = os.getenv("CORRELATION_URL", "http://localhost:8013")
 
 
 def forward_alert(alert: Dict[str, Any]) -> Dict[str, Any]:

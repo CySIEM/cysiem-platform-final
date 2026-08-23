@@ -101,10 +101,14 @@ export const getRecentLogs = (limit = 50) =>
 // AI Copilot
 // ----------------------
 
-export const askCopilot = (query) =>
+export const askCopilot = (query, incidentId) =>
     API.post("/copilot/chat", {
         query,
+        ...(incidentId ? { incident_id: incidentId } : {}),
     });
+
+export const getIncidentExplanation = (incidentId) =>
+    API.get(`/incidents/${incidentId}/explain`);
 
 
 export default API;

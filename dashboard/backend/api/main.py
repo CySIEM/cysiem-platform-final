@@ -164,6 +164,13 @@ async def chat_copilot(request: Request, current_user: models.User = Depends(aut
 
     return {"reply": reply}
 
+@app.get("/api/incidents/{incident_id}/explain")
+def explain_incident(incident_id: str, current_user: models.User = Depends(auth.get_current_user)):
+    try:
+        return bridge.get_incident_explanation(incident_id)
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=f"Could not get AI explanation for {incident_id}: {exc}")
+
 if __name__ == "__main__":
     import uvicorn
     # 0.0.0.0: binding to 127.0.0.1 here means NOTHING outside this machine

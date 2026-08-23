@@ -22,8 +22,8 @@ from sqlalchemy.orm import Session
 
 from . import models
 
-CORRELATION_URL = os.getenv("CORRELATION_URL", "http://localhost:8003")
-RAG_URL = os.getenv("RAG_URL", "http://localhost:8004")
+CORRELATION_URL = os.getenv("CORRELATION_URL", "http://localhost:8013")
+RAG_URL = os.getenv("RAG_URL", "http://localhost:8014")
 
 
 def _severity_bucket(severity_score: Any) -> str:
@@ -81,17 +81,32 @@ def sync_incidents_from_correlation(db: Session) -> int:
     return synced
 
 
+def get_incident_explanation(incident_id: str) -> Dict[str, Any]:
+    """Fetches the full incident report from correlation and runs it through
+    the RAG copilot's incident-explanation pipeline. Powers the dashboard's
+    Incident Detail modal (AI Analysis section, real timeline, recommended
+    actions) - previously that modal was fully static/hardcoded JSX with no
+    backend call at all.
+    """
+    resp = requests.get(f"{CORRELATION_URL}/report/{incident_id}", timeout=10)
+    resp.raise_for_status()
+    incident = resp.json()
+
+    resp = requests.post(f"{RAG_URL}/copilot/explain-incident", json=incident, timeout=30)
+    resp.raise_for_status()
+    explanation = resp.json()
+
+    explanation["timeline"] = incident.get("timeline", [])
+    explanation["attack_type"] = incident.get("attack_type")
+    return explanation
+
+
 def ask_copilot(query: str, incident_id: str | None = None) -> str:
     """Proxies a copilot question to the real rag-copilot service. Callers
     should catch exceptions and fall back to a canned response so the chat
     UI doesn't hard-fail when that service is down."""
     if incident_id:
-        resp = requests.get(f"{CORRELATION_URL}/report/{incident_id}", timeout=10)
-        resp.raise_for_status()
-        incident = resp.json()
-        resp = requests.post(f"{RAG_URL}/copilot/explain-incident", json=incident, timeout=30)
-        resp.raise_for_status()
-        return resp.json()["summary"]
+        return get_incident_explanation(incident_id)["summary"]
 
     resp = requests.post(f"{RAG_URL}/ask/", json={"question": query}, timeout=30)
     resp.raise_for_status()

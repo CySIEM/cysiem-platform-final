@@ -7,7 +7,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from api import models
-from api.bridge import _incident_title, _severity_bucket, sync_incidents_from_correlation
+from api.bridge import (
+    _incident_title,
+    _severity_bucket,
+    ask_copilot,
+    get_incident_explanation,
+    sync_incidents_from_correlation,
+)
 
 
 @pytest.fixture()
@@ -73,3 +79,60 @@ def test_sync_incidents_updates_existing_row_instead_of_duplicating(mock_get, db
 @patch("api.bridge.requests.get", side_effect=ConnectionError("correlation service down"))
 def test_sync_incidents_returns_zero_when_unreachable(mock_get, db_session):
     assert sync_incidents_from_correlation(db_session) == 0
+
+
+REPORT_RESPONSE = {
+    "incident_id": "INC-001",
+    "attack_type": "Brute Force",
+    "severity": 90,
+    "confidence": 85,
+    "timeline": [{"id": "alert-101", "timestamp": "2026-08-10T10:00:00Z", "title": "Failed login from PowerShell"}],
+    "recommendations": ["Reset impacted credentials"],
+}
+
+EXPLAIN_RESPONSE = {
+    "incident_id": "INC-001",
+    "summary": "This incident reflects a brute-force SSH attack.",
+    "severity": 90,
+    "risk_score": 85,
+    "recommended_actions": ["Reset impacted credentials"],
+    "references": ["brute_force.md"],
+}
+
+
+@patch("api.bridge.requests.post")
+@patch("api.bridge.requests.get")
+def test_get_incident_explanation_combines_report_and_rag_response(mock_get, mock_post):
+    mock_get.return_value = Mock(status_code=200, json=lambda: REPORT_RESPONSE)
+    mock_get.return_value.raise_for_status = lambda: None
+    mock_post.return_value = Mock(status_code=200, json=lambda: EXPLAIN_RESPONSE)
+    mock_post.return_value.raise_for_status = lambda: None
+
+    result = get_incident_explanation("INC-001")
+
+    mock_get.assert_called_once_with("http://localhost:8013/report/INC-001", timeout=10)
+    mock_post.assert_called_once()
+    assert result["summary"] == "This incident reflects a brute-force SSH attack."
+    assert result["timeline"] == REPORT_RESPONSE["timeline"]
+    assert result["attack_type"] == "Brute Force"
+
+
+@patch("api.bridge.get_incident_explanation")
+def test_ask_copilot_with_incident_id_delegates_to_explanation(mock_explain):
+    mock_explain.return_value = EXPLAIN_RESPONSE
+    reply = ask_copilot("ignored", incident_id="INC-001")
+    assert reply == "This incident reflects a brute-force SSH attack."
+    mock_explain.assert_called_once_with("INC-001")
+
+
+@patch("api.bridge.requests.post")
+def test_ask_copilot_without_incident_id_uses_ask_endpoint(mock_post):
+    mock_post.return_value = Mock(status_code=200, json=lambda: {"answer": "General answer"})
+    mock_post.return_value.raise_for_status = lambda: None
+
+    reply = ask_copilot("What is phishing?")
+
+    assert reply == "General answer"
+    mock_post.assert_called_once_with(
+        "http://localhost:8014/ask/", json={"question": "What is phishing?"}, timeout=30
+    )

@@ -16,10 +16,10 @@ model-name` just works:
 |---|---|---|
 | `entrick/Security-SLM-Gemma-4-E2B-it-GGUF` (default) | GGUF (Q4_K_M, 3.43GB), ships its own Ollama Modelfile in the repo | `ollama pull hf.co/entrick/Security-SLM-Gemma-4-E2B-it-GGUF:Q4_K_M` - Ollama's native "pull straight from a HF repo" support reads that Modelfile automatically. No manual Modelfile authoring needed. |
 | `Nguuma/Security-SLM-Gemma-4-E2B-it-GGUF` (alternate) | Same - GGUF, Q4_K_M, embedded chat template, no separate model card | `ollama pull hf.co/Nguuma/Security-SLM-Gemma-4-E2B-it-GGUF:Q4_K_M` |
-| `sathishphdai/cybersecurity-slm-5m` | **Not GGUF** - safetensors, ~34M param from-scratch LLaMA-style transformer | **Not Ollama-loadable.** Loaded directly via `transformers.AutoModelForCausalLM`/`AutoTokenizer`. Selected via `DETECTION_BACKEND=transformers`. Genuinely wired in (`backends/transformers_backend.py`), not just mentioned - this is how the third mandated model gets actually used, e.g. as a lightweight, Ollama-free fallback. Expect noticeably lower-quality output than the two Gemma models given its size. |
+| `sathishphdai/cybersecurity-slm-5m` | **Not GGUF, and not `AutoModelForCausalLM`-compatible either** - safetensors, ~34M param from-scratch LLaMA-style transformer with a custom `model_type: "cybersecurity-slm"` that isn't a registered HF architecture | Confirmed by an actual failed load attempt (`KeyError: 'cybersecurity-slm'`), then by reading the repo's own `chat.py`: it loads via a raw PyTorch class (`model.py`'s `IndustrySLM`) with weights read directly, tokenized with the low-level `tokenizers` library - not `from_pretrained()` at all. `backends/transformers_backend.py` downloads `model.py`/`config.py`/`model.safetensors`/`tokenizer.json` from the hub and follows that same path. Verified with a real live run: loads correctly (33.89M params, matching the model card) and generates on-topic (if rough - expected for a 34M-param from-scratch model) cybersecurity text in ~5 minutes on CPU. Selected via `DETECTION_BACKEND=transformers`. |
 
-Switch between the two Gemma variants or the tiny transformers model purely
-via `.env` (`DETECTION_BACKEND`, `DETECTION_MODEL` /
+Switch between the two Gemma variants or the small custom-architecture model
+purely via `.env` (`DETECTION_BACKEND`, `DETECTION_MODEL` /
 `TRANSFORMERS_DETECTION_MODEL`) - no code changes needed.
 
 ## Setup
@@ -29,8 +29,9 @@ via `.env` (`DETECTION_BACKEND`, `DETECTION_MODEL` /
 ollama pull hf.co/entrick/Security-SLM-Gemma-4-E2B-it-GGUF:Q4_K_M
 pip install -r requirements.txt
 
-# Transformers backend (lightweight/offline alternative):
-pip install -r requirements.txt torch transformers
+# Third-model backend (lightweight/offline alternative - see table above,
+# it does NOT use the `transformers` library's model classes):
+pip install -r requirements.txt torch huggingface_hub safetensors tokenizers
 # then set DETECTION_BACKEND=transformers in .env
 
 cp .env.example .env
@@ -39,8 +40,11 @@ uvicorn app:app --reload --port 8000
 
 Hardware: the Gemma GGUF model is a 4-bit quantized ~5B-parameter model -
 runs on CPU but is meaningfully faster with a GPU Ollama can use; needs
-~4GB free RAM/VRAM plus the 3.43GB download. The transformers model
-(~34M params) runs comfortably on CPU with no GPU or large download needed.
+~4GB free RAM/VRAM plus the 3.43GB download. The `sathishphdai` model
+(~34M params) needs no GPU and only a ~135MB download, but its reference
+`generate()` implementation has no KV-cache, so a 200-token CPU response
+takes several minutes - verified in a real run at ~5.4 minutes. Fine as a
+lightweight/offline fallback, not for interactive-latency use.
 
 ## API
 
