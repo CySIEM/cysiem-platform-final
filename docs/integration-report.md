@@ -202,13 +202,13 @@ duplicate Team 2/4/6's actual scope. They still exist in the original
 | `services/correlation` (Team 4's original 21 tests, unchanged) | **21 passed** |
 | `dashboard/backend` (new bridge smoke tests, 6 tests) | **6 passed** |
 | `dashboard/frontend` `npm run build` | **succeeded** (pre-existing bundle-size warning only, not introduced here) |
-| `services/assets` (Team 2's original pytest suite) | **not run** - needs a live Postgres; one is installed on this machine but its credentials weren't available and guessing at them wasn't attempted. `python -m py_compile` over the full `app/` tree passed (no syntax/import-order errors). |
-| Full `orchestrator/run_demo.py` live run | **not run** - requires Docker and a running Ollama with the 3.4GB mandated model pulled, neither of which is available in this environment (`docker`/`ollama` commands not found here). The script, adapter logic, response parsing, and every service's HTTP contract it depends on are covered by the unit/integration tests above; a live run needs to happen wherever Docker + Ollama are actually available. |
+| `services/assets` (Team 2's original pytest suite) | **23 passed** (see Section I - this was re-run live against an isolated Postgres instance after the credentials blocker was resolved). |
+| Full `orchestrator/run_demo.py` live run | **succeeded** (see Section I for the full transcript) - Docker still isn't available in this environment, but every service was run natively with `uvicorn` instead, which is exactly how their own Dockerfiles invoke them, so this is a low-risk substitution, not a gap. |
 
-**Total: 61 of 61 runnable tests passed.** The two gaps (assets' DB-backed
-suite, the live orchestrator run) are both infrastructure-availability
-issues in this environment, not code issues - see the table for exactly
-what's needed to close them.
+**Total: 88 of 88 runnable tests passed** (61 from the initial integration
+pass + 23 from `services/assets`, then re-verified together as 88 after
+Section I's fixes), plus a full, real, live end-to-end pipeline run - see
+Section I.
 
 ---
 
@@ -298,3 +298,137 @@ was also live-tested, not just unit-tested with mocks:
   `uvicorn` directly, which is how their Dockerfiles invoke them too, so
   this is a low-risk gap (the same commands, same code, different process
   supervisor).
+
+---
+
+## I. Final MVP Validation - Postgres Blocker Resolved, Real End-to-End Run
+
+### PostgreSQL blocker resolution
+
+Rather than guess at the existing native Postgres install's credentials (or
+touch it at all), a fully isolated PostgreSQL 18 instance was created
+specifically for CySIEM using the Postgres binaries already on the machine:
+a separate data directory (`E:\CysiemPgData`) and a separate port (5433,
+not the default 5432 - deliberately, to avoid any collision), initialized
+with test-only credentials (`cysiem` / `cysiem_test_pw`, database
+`cysiem_layer3`). Documented and reproducible via
+`scripts/setup_isolated_postgres.ps1`. `services/assets/.env.example` and
+`docker-compose.yml`'s Postgres port mapping were both updated to match.
+The existing native Postgres service was never touched, read, or
+authenticated against.
+
+`services/assets` needed no Alembic migrations to run (none exist - see
+Section D) - it auto-creates its 6 tables on first startup in
+non-production mode, which it did correctly against the new isolated
+instance on the first real run.
+
+Separately: this service's pinned dependency versions (`pydantic-core`,
+`asyncpg`, `greenlet`) don't have prebuilt wheels for Python 3.14 (the
+default `python` on this machine) and failed to build from source (missing
+Rust/MSVC toolchain state). Fixed by using the Python 3.11 install already
+present on the machine (`py -3.11 -m venv .venv`) instead of pinning down
+or upgrading any dependency - not a code change, an environment one.
+
+### Real bug found and fixed by the actual end-to-end run
+
+`orchestrator/run_demo.py` assumed `GET /api/v1/entities` returned a bare
+list; it actually returns `{"items": [...], "total", "page", "page_size"}`
+(pagination wrapper). This was never caught before because the script had
+never been run against a live assets service. Fixed
+(`entities = resp.json()["items"]`). This is exactly the kind of contract
+mismatch integration testing exists to catch - noted here rather than
+buried in a diff, since it's a genuine finding, not a formality.
+
+Also: the orchestrator's `/detect` call originally used the sequence's
+final, benign event (a legitimate successful login) rather than the actual
+brute-force attempts also present in the sample data - functionally
+correct (the pipeline handled it fine, correctly returning "Unclassified"
+for a benign event, exactly as Team 4's own root-cause logic is designed
+to do) but a weak demo, since it didn't exercise real threat detection.
+Changed to detect the brute-force event instead, which does get classified
+and correlated as an actual incident - the more representative and useful
+proof of the architecture.
+
+### Full real end-to-end run - request/response transcript
+
+All six services were started natively (`uvicorn ...`, one per service, no
+Docker in this environment - see Section G) against the isolated Postgres
+above and a real Ollama instance with both pulled mandated models. Sample
+dataset (small and controlled, per the requirement - not the full 1GB+
+corpus): 4 SSH auth-log lines (3 failed logins from `185.220.101.5` as
+`admin`/`root`, 1 successful login as `alice`) plus one blocked SMB
+network-flow record from the same source IP - i.e. a benign event, a
+brute-force pattern, and a network attack event, exactly as requested.
+
+1. Collection -> Assets: `POST /ingest/raw` (collection, :8010) with the 4
+   auth-log lines -> normalized and forwarded to assets (:8001) ->
+   `{"events_processed": 4, "entities_found": 20, "assets_resolved": 1,
+   "failed_auth_events": 3}`. Confirmed not mocked by querying assets
+   directly afterward: `GET /api/v1/entities` returned 13 real entities
+   (usernames `admin`/`root`/`alice`, IPs `185.220.101.5`/`10.0.0.15`,
+   hostname `server-01`, process `sshd`, ports); `GET /api/v1/assets`
+   returned one real resolved asset for `server-01` with
+   `"failed_auth_count": 3` (exactly matching the 3 failed logins) and the
+   correct `ip_addresses`/`usernames` lists; `GET /api/v1/graph/stats`
+   returned `{"nodes": 7, "edges": 6}`.
+2. Detection: `POST /detect` (:8012) with the brute-force event and real
+   entity context from step 1, using the primary mandated model
+   (`entrick/Security-SLM-Gemma-4-E2B-it-GGUF` via Ollama) ->
+   `{"prediction": "suspicious", "mitre": "T1110", "reason": "The event
+   details a failed SSH login attempt for the 'admin' user from an
+   external IP, indicating a potential brute-force attack."}` - clean,
+   directly-parseable JSON, correct MITRE technique. Auto-forwarded to
+   correlation.
+3. Correlation + Investigation: correlation (:8013) produced incident
+   INC-001: `severity_score: 50`, `mitre: [{"technique": "T1110", "name":
+   "Brute Force"}]`, `root_cause: "Observed evidence suggests: Failed
+   login activity"`, a real timeline and attack graph (3 nodes:
+   `server-01`, `185.220.101.5`, `admin`), and `recommendations: ["Review
+   authentication logs and reset impacted credentials"]`.
+4. RAG + Copilot: `POST /copilot/explain-incident` (:8014) with INC-001's
+   report -> a real, retrieval-grounded explanation (cites
+   `brute_force.md`, `ssh.md` as sources) covering what happened, why it's
+   risky, and concrete next actions (review auth logs, reset credentials,
+   enable MFA, rate-limit logins) - genuinely generated by `llama3.2` via
+   Ollama, not a template.
+5. Dashboard: authenticated `GET /api/dashboard/init` (:8000) showed
+   `"open_incidents": 1`, `{"id": "INC-001", "title": "Brute Force", "sev":
+   "medium"}` - synced live by the bridge, not seeded/mocked. Authenticated
+   `GET /api/incidents/INC-001/explain` returned the full AI
+   explanation/risk score (60)/recommended actions/references/real
+   timeline through the exact API the React frontend calls.
+6. Response: `POST /api/incidents/INC-001/respond` recorded a real
+   ResponseAction row (`status: "simulated_complete"`, who triggered it,
+   when) - queryable afterward via `GET
+   /api/incidents/INC-001/response-history`. No real-world action taken,
+   per the safety requirement.
+
+Incident ID: INC-001. AI result: suspicious, MITRE T1110 (Brute Force).
+Risk score: 60 (dashboard-facing) / severity 50 (correlation-native
+score). Dashboard result: incident visible with correct title/severity,
+full AI explanation retrievable, response action recorded. The full chain
+was re-run twice (once revealing and fixing the entities-pagination bug
+above, once clean) - reproducible via `python orchestrator/run_demo.py`
+per the README.
+
+### Layer 10 upgraded from UI-only to a real backend record
+
+Per this validation's explicit ask ("make sure the response action
+produces a real backend event/record rather than only changing UI state,
+if this can be implemented safely and quickly"): added
+`models.ResponseAction` (dashboard backend), `POST
+/api/incidents/{id}/respond` and `GET /api/incidents/{id}/response-history`,
+and wired the dashboard's Incident Modal "RUN PLAYBOOK" button to call it
+(previously: `setActiveTab`, no backend call at all). Still fully
+simulated/safe - `status: "simulated_complete"`, no real IP
+blocking/account disabling/host isolation - just now a real, queryable
+audit record instead of only a toast notification.
+
+### Final test count
+
+88 of 88 runnable tests pass (15 collection + 13 detection + 6 rag-copilot
++ 21 correlation + 10 dashboard/backend + 23 assets). Frontend builds
+clean. All six services start and respond correctly. Ollama connection and
+both pulled mandated models confirmed working. The complete pipeline was
+run live, not simulated, and the resulting incident was traced end-to-end
+through every layer to the dashboard.

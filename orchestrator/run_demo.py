@@ -63,21 +63,25 @@ def main():
         timeout=30,
     )
     resp.raise_for_status()
-    entities = resp.json()
+    entities = resp.json()["items"]  # GET /entities is paginated: {items, total, page, page_size}
     print(f"Assets service now knows {len(entities)} entities.")
 
     step("4. AI Detection")
     # Build a normalized event matching what the collection service would
-    # have sent, for the final (successful login) event in the sequence.
+    # have sent, for the actual brute-force attempt in the sequence (not
+    # the final benign successful login) - this is the event that should
+    # actually get flagged, correlated into a real incident with a MITRE
+    # technique, and explained by the Copilot below.
     detect_event = {
-        "event_id": "demo-evt-004",
-        "event_time": "2026-08-23T10:15:07+00:00",
+        "event_id": "demo-evt-001",
+        "event_time": "2026-08-23T10:15:01+00:00",
         "source": {"host": "server-01", "log_type": "auth_log", "source_type": "linux"},
         "normalized": {
             "action": "ssh_login",
-            "outcome": "success",
-            "user": "alice",
+            "outcome": "failure",
+            "user": "admin",
             "src_ip": "185.220.101.5",
+            "message": "Failed password for invalid user admin from 185.220.101.5, 3rd attempt in 5 seconds",
         },
     }
     resp = requests.post(

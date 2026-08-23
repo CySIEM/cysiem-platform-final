@@ -164,6 +164,61 @@ async def chat_copilot(request: Request, current_user: models.User = Depends(aut
 
     return {"reply": reply}
 
+class PlaybookRunRequest(schemas.BaseModel):
+    playbook_id: str
+    playbook_title: str
+
+@app.post("/api/incidents/{incident_id}/respond")
+def run_playbook(
+    incident_id: str,
+    request: PlaybookRunRequest,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db),
+):
+    """Records a (simulated, MVP-safe) response action - Layer 10 does not
+    perform any real-world action. See models.ResponseAction."""
+    record = models.ResponseAction(
+        incident_id=incident_id,
+        playbook_id=request.playbook_id,
+        playbook_title=request.playbook_title,
+        triggered_by=current_user.username,
+        status="simulated_complete",
+    )
+    db.add(record)
+    db.commit()
+    db.refresh(record)
+    return {
+        "id": record.id,
+        "incident_id": record.incident_id,
+        "playbook_title": record.playbook_title,
+        "triggered_by": record.triggered_by,
+        "status": record.status,
+        "created_at": record.created_at,
+    }
+
+@app.get("/api/incidents/{incident_id}/response-history")
+def get_response_history(
+    incident_id: str,
+    current_user: models.User = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db),
+):
+    records = (
+        db.query(models.ResponseAction)
+        .filter(models.ResponseAction.incident_id == incident_id)
+        .order_by(models.ResponseAction.created_at.desc())
+        .all()
+    )
+    return [
+        {
+            "id": r.id,
+            "playbook_title": r.playbook_title,
+            "triggered_by": r.triggered_by,
+            "status": r.status,
+            "created_at": r.created_at,
+        }
+        for r in records
+    ]
+
 @app.get("/api/incidents/{incident_id}/explain")
 def explain_incident(incident_id: str, current_user: models.User = Depends(auth.get_current_user)):
     try:

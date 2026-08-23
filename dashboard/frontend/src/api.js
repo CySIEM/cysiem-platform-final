@@ -110,5 +110,11 @@ export const askCopilot = (query, incidentId) =>
 export const getIncidentExplanation = (incidentId) =>
     API.get(`/incidents/${incidentId}/explain`);
 
+export const runIncidentPlaybook = (incidentId, playbookId, playbookTitle) =>
+    API.post(`/incidents/${incidentId}/respond`, {
+        playbook_id: playbookId,
+        playbook_title: playbookTitle,
+    });
+
 
 export default API;

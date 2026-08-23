@@ -136,3 +136,22 @@ def test_ask_copilot_without_incident_id_uses_ask_endpoint(mock_post):
     mock_post.assert_called_once_with(
         "http://localhost:8014/ask/", json={"question": "What is phishing?"}, timeout=30
     )
+
+
+def test_response_action_model_records_and_queries(db_session):
+    from api.models import ResponseAction
+
+    record = ResponseAction(
+        incident_id="INC-001",
+        playbook_id="PB-AUTO",
+        playbook_title="Simulated response: Reset credentials",
+        triggered_by="analyst1",
+        status="simulated_complete",
+    )
+    db_session.add(record)
+    db_session.commit()
+
+    rows = db_session.query(ResponseAction).filter(ResponseAction.incident_id == "INC-001").all()
+    assert len(rows) == 1
+    assert rows[0].status == "simulated_complete"
+    assert rows[0].triggered_by == "analyst1"

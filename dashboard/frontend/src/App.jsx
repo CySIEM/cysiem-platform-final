@@ -5,7 +5,7 @@ import AgentDetails from "./components/AgentDetails";
 import {
     loginUser, registerUser, getCurrentUser, getDashboard, getAgents,
     getAgentDetails, addAgent, updateAgent, deleteAgent, askCopilot, getRecentLogs,
-    getIncidentExplanation } from "./api";
+    getIncidentExplanation, runIncidentPlaybook } from "./api";
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Activity, ShieldAlert, GitCommit, FileText, Bot, BookOpen, Clock, MonitorSmartphone, 
@@ -60,6 +60,7 @@ export default function App() {
   const [incidentExplanation, setIncidentExplanation] = useState(null);
   const [explanationLoading, setExplanationLoading] = useState(false);
   const [explanationError, setExplanationError] = useState(null);
+  const [respondingIncident, setRespondingIncident] = useState(false);
 
   const addToast = (msg, type = 'info') => {
     const id = Date.now();
@@ -1117,7 +1118,28 @@ export default function App() {
                   </div>
                   <div className="pt-4 flex gap-3">
                     <button onClick={() => { addToast('Assigning incident to your queue...', 'success'); setSelectedIncident(null); }} className="flex-1 py-3 bg-indigo-600 text-white font-bold text-xs tracking-widest rounded-xl shadow-lg shadow-indigo-500/25 hover:bg-indigo-700 transition-colors">CLAIM INCIDENT</button>
-                    <button onClick={() => { setActiveTab('playbooks'); setSelectedIncident(null); }} className="flex-1 py-3 bg-white border border-slate-200 text-slate-700 font-bold text-xs tracking-widest rounded-xl shadow-sm hover:border-indigo-300 hover:text-indigo-600 transition-colors">RUN PLAYBOOK</button>
+                    <button
+                      disabled={respondingIncident}
+                      onClick={async () => {
+                        setRespondingIncident(true);
+                        try {
+                          const recommended = incidentExplanation?.recommended_actions?.[0];
+                          await runIncidentPlaybook(
+                            selectedIncident.id,
+                            "PB-AUTO",
+                            recommended ? `Simulated response: ${recommended}` : "Simulated incident response"
+                          );
+                          addToast(`Response action recorded for ${selectedIncident.id}. This is simulated - no real system was changed.`, 'success');
+                        } catch (err) {
+                          addToast('Could not record the response action - backend unreachable.', 'error');
+                        } finally {
+                          setRespondingIncident(false);
+                        }
+                      }}
+                      className="flex-1 py-3 bg-white border border-slate-200 text-slate-700 font-bold text-xs tracking-widest rounded-xl shadow-sm hover:border-indigo-300 hover:text-indigo-600 transition-colors disabled:opacity-50"
+                    >
+                      {respondingIncident ? 'RECORDING...' : 'RUN PLAYBOOK'}
+                    </button>
                   </div>
                 </div>
               </motion.div>

@@ -14,7 +14,13 @@ services:
       POSTGRES_PASSWORD: cysiem
       POSTGRES_DB: cysiem_layer3
     ports:
-      - "5432:5432"
+      # Host-side 5433, not Postgres's default 5432: on a dev machine that
+      # already has a native Postgres install (as this project's own
+      # validation environment did), 5432 is likely already taken. Internal
+      # container-to-container traffic (assets' DATABASE_URL below) uses
+      # the service DNS name + Postgres's normal internal port 5432, so
+      # this only affects connecting from the host machine itself.
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

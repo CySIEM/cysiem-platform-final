@@ -78,6 +78,22 @@ class Agent(Base):
     tags = Column(String, nullable=True)
     owner = Column(String, nullable=True)
     
+class ResponseAction(Base):
+    """A real, queryable record of a (simulated, MVP-safe) response action
+    triggered against an incident - e.g. "RUN PLAYBOOK" in the dashboard.
+    Layer 10 does not perform any real-world action (no actual IP blocking,
+    account disabling, or host isolation); this only records that an
+    analyst triggered one, for real audit/history purposes instead of the
+    action existing only as transient UI toast state."""
+    __tablename__ = "response_actions"
+    id = Column(Integer, primary_key=True, index=True)
+    incident_id = Column(String, index=True)
+    playbook_id = Column(String)
+    playbook_title = Column(String)
+    triggered_by = Column(String)
+    status = Column(String, default="simulated_complete")
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+
 class AgentLog(Base):
     __tablename__ = "agent_logs"
 
