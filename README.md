@@ -16,6 +16,36 @@ all). Read [docs/integration-report.md](docs/integration-report.md) first
 if you're wondering why something is structured the way it is - it has the
 full audit, every bug found and fixed, and every integration decision made.
 
+## What CySIEM Does
+
+CySIEM ingests raw security logs, figures out what assets/users/IPs are
+involved, uses an AI model to judge whether an event is malicious, groups
+related events into incidents, investigates them (timeline, root cause,
+evidence, attack graph), retrieves relevant security knowledge for that
+specific incident, has an AI Copilot explain it in plain language with
+recommended actions, and surfaces all of that on an analyst dashboard -
+with a safe, simulated response-action trigger. The whole chain is proven
+working end-to-end, not just unit-tested in isolation - see
+[docs/integration-report.md](docs/integration-report.md) Section I for a
+real request/response transcript of an actual run.
+
+## Main Features
+
+- Real log parsing (Linux auth.log, Windows Event Log, network flow) and
+  normalization into a shared event schema
+- Entity extraction and asset resolution (users, hosts, IPs, processes,
+  IOCs, vulnerabilities) with a queryable relationship graph
+- AI-based threat classification using a dedicated cybersecurity SLM, with
+  MITRE ATT&CK technique mapping
+- Rule-based event correlation into incidents, with timeline
+  reconstruction, root-cause analysis, evidence aggregation, and attack
+  graph generation
+- Retrieval-augmented AI Security Copilot: grounds its explanations in an
+  actual security knowledge base, not free-form guessing
+- A dashboard showing real incidents, severity, risk score, affected
+  assets, timeline, and AI explanations - not seeded demo data
+- A safe, audit-logged simulated response action per incident
+
 ## Architecture
 
 ```
@@ -48,6 +78,21 @@ a React frontend), wired together over HTTP rather than merged into one
 codebase - see the integration report for why. Ports listed are the ones
 used consistently across `docker-compose.yml`, every service's
 `.env.example`, and `orchestrator/run_demo.py`.
+
+### Layers 1-10
+
+| Layer | Name | What it does | Implemented in |
+|---|---|---|---|
+| 1 | Data Collection | Parses raw logs (SSH auth.log, Windows Event Log JSON, network flow) | `services/collection` |
+| 2 | Data Processing | Validates/cleans/normalizes into a shared event schema, forwards to Layer 3 | `services/collection` |
+| 3 | Asset Intelligence | Extracts entities, resolves assets, evaluates IOCs/vulnerabilities, builds a relationship graph | `services/assets` |
+| 4 | Detection | Classifies events using a security SLM (see Required Models), maps to MITRE ATT&CK | `services/detection` |
+| 5 | Correlation | Groups related alerts into incidents by shared host/user/IP/process | `services/correlation` |
+| 6 | Investigation | Timeline, root-cause analysis, evidence aggregation, attack graph | `services/correlation` |
+| 7 | Knowledge Fabric / RAG | Retrieves relevant security knowledge for a given incident from a FAISS-indexed knowledge base | `services/rag-copilot` |
+| 8 | AI Security Copilot | Uses retrieved context + an LLM to explain incidents and recommend actions | `services/rag-copilot` |
+| 9 | Visualization Dashboard | Displays real incidents/severity/risk/timeline/AI explanations | `dashboard/frontend` + `dashboard/backend` |
+| 10 | Response & Learning | Records a safe, simulated response action per incident (no real-world effect) | `dashboard/backend` |
 
 ## Installation
 
@@ -156,21 +201,54 @@ docker exec -it $(docker compose ps -q ollama) ollama pull llama3.2
 ```
 
 **Option B - run each service natively** (what was actually used to
-validate this project end-to-end):
+validate this project end-to-end - one command per terminal, 7 terminals
+total). Use `python -m uvicorn`, not bare `uvicorn` - on Windows in
+particular, pip-installed console scripts often land in a `Scripts`
+directory that isn't on `PATH`, so the bare `uvicorn` command fails with
+"not recognized" even though it's installed; `python -m uvicorn` always
+works because it doesn't depend on `PATH` at all, only on `uvicorn` being
+importable by whichever `python` you're invoking.
 
-```bash
-cd services/collection   && uvicorn app:app --port 8010 &
-cd services/assets       && .venv/bin/uvicorn app.main:app --port 8001 &
-cd services/detection    && uvicorn app:app --port 8012 &
-cd services/correlation  && uvicorn api.server:app --port 8013 &
-cd services/rag-copilot  && uvicorn app:app --port 8014 &
-cd dashboard/backend     && uvicorn api.main:app --port 8000 &
-cd dashboard/frontend    && npm run dev &
+PowerShell:
+
+```powershell
+cd services\collection;  python -m uvicorn app:app --port 8010
+cd services\assets;      .venv\Scripts\python.exe -m uvicorn app.main:app --port 8001
+cd services\detection;   python -m uvicorn app:app --port 8012
+cd services\correlation; python -m uvicorn api.server:app --port 8013
+cd services\rag-copilot; python -m uvicorn app:app --port 8014
+cd dashboard\backend;    python -m uvicorn api.main:app --port 8000
+cd dashboard\frontend;   npm run dev
 ```
 
-(Each command needs its own terminal, or background them as shown. Every
-service reads its config from its own `.env` - copy each `.env.example`
-first.)
+macOS/Linux (bash):
+
+```bash
+cd services/collection   && python -m uvicorn app:app --port 8010
+cd services/assets       && .venv/bin/python -m uvicorn app.main:app --port 8001
+cd services/detection    && python -m uvicorn app:app --port 8012
+cd services/correlation  && python -m uvicorn api.server:app --port 8013
+cd services/rag-copilot  && python -m uvicorn app:app --port 8014
+cd dashboard/backend     && python -m uvicorn api.main:app --port 8000
+cd dashboard/frontend    && npm run dev
+```
+
+Every service reads its config from its own `.env` - copy each
+`.env.example` first. `services/detection` and `dashboard/backend` also
+need `CORRELATION_URL`/`RAG_URL` set (either in `.env` or as environment
+variables) so they can reach their sibling services - see Environment
+Variables below.
+
+## Dashboard
+
+Once `dashboard/frontend` and `dashboard/backend` are both running, open:
+
+**http://localhost:5173**
+
+Register a user (the first one registered becomes `admin`), then log in.
+The Incidents tab shows real incidents produced by the pipeline - click
+one to see its AI-generated explanation, risk score, and recommended
+actions, and to trigger a simulated response action.
 
 ## Running the Demo
 
@@ -197,6 +275,47 @@ a full transcript of an actual run.
 | `correlation` (:8013) | `POST /ingest`, `GET /incidents`, `GET /report/{id}`, `GET /timeline/{id}`, `GET /root-cause/{id}` |
 | `rag-copilot` (:8014) | `POST /ask/`, `POST /copilot/explain-incident`, `GET /health` |
 | `dashboard/backend` (:8000) | `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/dashboard/init`, `GET /api/incidents/{id}/explain`, `POST /api/incidents/{id}/respond`, `GET /api/incidents/{id}/response-history`, `POST /api/copilot/chat` |
+
+## Troubleshooting
+
+Real issues hit while building and validating this project, and how they
+were actually fixed - not hypothetical:
+
+- **`uvicorn: The term 'uvicorn' is not recognized...`** (PowerShell) -
+  the console script isn't on `PATH`. Use `python -m uvicorn ...` instead
+  of bare `uvicorn ...` everywhere (see Starting the System above); it
+  doesn't need `PATH` at all.
+- **Detection or Copilot calls suddenly return 503 / "could not reach
+  Ollama"** after Ollama had been working - Ollama auto-updates and
+  restarts itself, and the restarted process may not have the
+  `OLLAMA_MODELS` environment variable your original `ollama serve`
+  session had, so it looks in the default model directory and finds
+  nothing (`ollama list` comes back empty even though your models are
+  still on disk). Fix: stop the Ollama process, re-set `OLLAMA_MODELS` to
+  wherever your models actually are, and restart `ollama serve` (or the
+  Ollama app) in that same shell/environment.
+- **`services/assets` fails to `pip install`** with Rust/`link.exe`
+  compiler errors (`pydantic-core`, `asyncpg`, `greenlet`) - its pinned
+  dependency versions don't have prebuilt wheels for very new Python
+  versions (e.g. 3.13/3.14) on Windows, so pip tries to compile from
+  source and fails without a Rust/MSVC toolchain. Use Python 3.11 for this
+  service specifically: `py -3.11 -m venv .venv` (or `python3.11 -m venv
+  .venv` on macOS/Linux), then install into that venv.
+- **`services/assets` can't connect to Postgres / `password authentication
+  failed`** - check `DATABASE_URL` matches whatever instance you actually
+  set up (see PostgreSQL Setup above); if you used
+  `scripts/setup_isolated_postgres.ps1`, that's port 5433 with password
+  `cysiem_test_pw`, not Postgres's default 5432.
+- **A service refuses to bind its port** - something else is already
+  using it (a previous run you didn't stop, or another app). Find and
+  stop the conflicting process, or run that one service on a different
+  port and update the URL any dependent service uses to reach it
+  (`CORRELATION_URL`, `RAG_URL`, `ASSETS_URL`, etc.).
+- **`orchestrator/run_demo.py` fails at the Detection step** - almost
+  always means the detection service can't reach Ollama or the model
+  isn't loaded; check `ollama list` shows the model from Required Models
+  above, and that `services/detection` is running with
+  `DETECTION_BACKEND=ollama` (the default).
 
 ## Known MVP Limitations
 
